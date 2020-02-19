@@ -1,7 +1,8 @@
 if SERVER then
 	AddCSLuaFile()
-
-	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_pha.vmt')
+	
+	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_tra.vtf'
+	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_tra.vmt')
 end
 
 ROLE.Base = 'ttt_role_base'
