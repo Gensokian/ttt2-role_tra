@@ -1,0 +1,23 @@
+"Refract"
+{
+ 	"$refractamount" 		"1"
+ 	"$bluramount" 		"0"
+
+	"$scale" 			"[1 1]"
+
+	"$dudvmap" 		"vgui\ttt\trapper_refract"
+	"$normalmap" 		"vgui\ttt\trapper_refract"
+
+	"$nocull" "0"
+	"$ignorez" "1"
+
+	"Refract_DX80"
+	{
+		"$fallbackmaterial" "null"
+	}
+
+	"Refract_DX60"
+	{
+		"$fallbackmaterial" "null"
+	}
+}
