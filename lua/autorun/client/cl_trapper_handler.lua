@@ -41,6 +41,9 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 		-- remove after render time
 		if CurTime() - effect.time > EFFECT_TIME then
 			table.remove(refractData, i)
+
+			-- decrease index by one because the table lost an entry
+			i = i - 1
 		end
 	end
 end)
