@@ -1,6 +1,6 @@
 if SERVER then
 	AddCSLuaFile()
-
+	resource.AddWorkshop("2004491494")
 	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_tra.vmt')
 end
 
