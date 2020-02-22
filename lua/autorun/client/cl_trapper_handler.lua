@@ -24,6 +24,9 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 
 	if effectAmount == 0 then return end
 
+	-- cache indezes of elements that should be removed
+	local remove_indezes = {}
+
 	-- iterate over all effects and handle them seperately
 	for i = 1, effectAmount do
 		-- get effect from table
@@ -40,10 +43,12 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 
 		-- remove after render time
 		if CurTime() - effect.time > EFFECT_TIME then
-			table.remove(refractData, i)
-
-			-- decrease index by one because the table lost an entry
-			i = i - 1
+			remove_indezes[#remove_indezes + 1] = i
 		end
+	end
+
+	-- iterate over remove_indezes
+	for i = 1, #remove_indezes do
+		table.remove(refractData, remove_indezes[i])
 	end
 end)
