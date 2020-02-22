@@ -47,8 +47,8 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 		end
 	end
 
-	-- iterate over remove_indezes
-	for i = 1, #remove_indezes do
+	-- iterate over remove_indezes, iterate backwards to preserver idezes
+	for i = #remove_indezes, 1, -1 do
 		table.remove(refractData, remove_indezes[i])
 	end
 end)
