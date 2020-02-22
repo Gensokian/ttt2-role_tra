@@ -7,7 +7,7 @@ end
 ROLE.Base = 'ttt_role_base'
 
 function ROLE:PreInitialize()
-	self.color = Color(52, 70, 92, 255)
+	self.color = Color(96, 113, 94, 255)
 
 	self.abbr = 'tra'
 	self.surviveBonus = 0

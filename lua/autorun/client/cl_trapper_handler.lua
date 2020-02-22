@@ -1,7 +1,7 @@
 local refractMaterial = Material("vgui/ttt/trapper_refract")
 local refractData = {}
 
-local EFFECT_TIME = 2
+local EFFECT_TIME = 1
 
 net.Receive("ttt2_role_trapper_used_tbutton", function()
 	local wasTrapperUse = net.ReadBool()
@@ -33,12 +33,16 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 		local effect = refractData[i]
 
 		-- calculate size based on time
-		local refractSize = (CurTime() - effect.time) ^ 2 * 2048
+		local refractSize = (CurTime() - effect.time) ^ 2 * 512
 
 		-- draw in 3D space
 		cam.Start3D()
-		render.SetMaterial(refractMaterial)
-		render.DrawSprite(effect.butPos, refractSize, refractSize, COLOR_WHITE)
+			refractMaterial:SetFloat( "$refractamount", (1 - (CurTime() - effect.time))*0.2 )
+
+			render.SetMaterial(refractMaterial)
+			render.UpdateRefractTexture()
+			render.DrawSprite(effect.butPos, refractSize, refractSize, COLOR_WHITE)
+
 		cam.End3D()
 
 		-- remove after render time

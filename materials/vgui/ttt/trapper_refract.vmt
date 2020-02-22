@@ -1,15 +1,15 @@
 "Refract"
 {
- 	"$refractamount" 		"0.1"
- 	"$bluramount" 		"50"
+ 	"$refractamount" 		"1"
+ 	"$bluramount" 		"0"
 
 	"$scale" 			"[1 1]"
 
 	"$dudvmap" 		"vgui\ttt\trapper_refract"
 	"$normalmap" 		"vgui\ttt\trapper_refract"
-	
-	"$nocull" "1"
-	"$ignorez" "0"
+
+	"$nocull" "0"
+	"$ignorez" "1"
 
 	"Refract_DX80"
 	{
