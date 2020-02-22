@@ -19,7 +19,7 @@ hook.Add("TTTTraitorButtonActivated", "ttt2_role_trapper_button_used", function(
 		local butPos = but:GetPos()
 
 		net.Start("ttt2_role_trapper_used_tbutton")
-		net.WriteBool(true)
+		net.WriteBool(false)
 		net.WriteFloat(butPos.x)
 		net.WriteFloat(butPos.y)
 		net.WriteFloat(butPos.z)
@@ -48,7 +48,7 @@ hook.Add("TTTTraitorButtonActivated", "ttt2_role_trapper_button_used", function(
 		local butPos = but:GetPos()
 
 		net.Start("ttt2_role_trapper_used_tbutton")
-		net.WriteBool(false)
+		net.WriteBool(true)
 		net.WriteFloat(butPos.x)
 		net.WriteFloat(butPos.y)
 		net.WriteFloat(butPos.z)

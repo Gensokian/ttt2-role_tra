@@ -8,5 +8,5 @@ net.Receive("ttt2_role_trapper_used_tbutton", function()
 
 	print("Button was used!")
 	print("Was Trapper usage: " .. tostring(wasTrapperUse))
-	PrintTable(butPos)
+	print(butPos)
 end)
