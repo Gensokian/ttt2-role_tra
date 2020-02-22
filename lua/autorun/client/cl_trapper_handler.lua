@@ -1,5 +1,7 @@
 local refractMaterial = Material("vgui/ttt/trapper_refract")
-local refractData
+local refractData = {}
+
+local EFFECT_TIME = 2
 
 net.Receive("ttt2_role_trapper_used_tbutton", function()
 	local wasTrapperUse = net.ReadBool()
@@ -9,43 +11,36 @@ net.Receive("ttt2_role_trapper_used_tbutton", function()
 		net.ReadFloat()
 	)
 
- -- Display the ripple effect where the trap was used!
-
---
-
-	refractData = {
+	refractData[#refractData + 1] = {
 		wasTrapperUse = wasTrapperUse,
 		butPos = butPos,
 		time = CurTime()
 	}
-
-	--
-	-- print("Button was used!")
-	-- print("Was Trapper usage: " .. tostring(wasTrapperUse))
-	-- print(butPos)
-
 end)
 
 
 hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
-	if not refractData then return end
+	local effectAmount = #refractData
 
-	local scrpos = refractData.butPos:ToScreen() -- Position of the used trap
-	--if IsOffScreen(scrpos) then return end -- If the effect isn't on screen, don't render it.
+	if effectAmount == 0 then return end
 
-	local refractSize = (CurTime() - refractData.time )^2 * 2048
+	-- iterate over all effects and handle them seperately
+	for i = 1, effectAmount do
+		-- get effect from table
+		local effect = refractData[i]
 
-	-- draw.FilteredTexture(scrpos.x - refractSize * 0.5 , scrpos.y - refractSize*0.5, refractSize, refractSize, refractMaterial, 30, Color(0,0,0))
+		-- calculate size based on time
+		local refractSize = (CurTime() - effect.time) ^ 2 * 2048
 
+		-- draw in 3D space
+		cam.Start3D()
+		render.SetMaterial(refractMaterial)
+		render.DrawSprite(effect.butPos, refractSize, refractSize, COLOR_WHITE)
+		cam.End3D()
 
-	cam.Start3D() -- Start the 3D function so we can draw onto the screen.
-		render.SetMaterial( refractMaterial ) -- Tell render what material we want, in this case the flash from the gravgun
-	 	render.DrawSprite( refractData.butPos, refractSize, refractSize, COLOR_WHITE) -- Draw the sprite in the middle of the map, at 16x16 in it's original colour with full alpha.
-	 cam.End3D()
-
-
-	if CurTime()-refractData.time > 2 then
-		refractData = nil
+		-- remove after render time
+		if CurTime() - effect.time > EFFECT_TIME then
+			table.remove(refractData, i)
+		end
 	end
-
 end)
