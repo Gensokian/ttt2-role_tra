@@ -32,3 +32,7 @@ function ROLE:PreInitialize()
 		traitorButton = 1, -- can use traitor buttons
 	}
 end
+
+function ROLE:Initialize()
+	roles.SetBaseRole(self, ROLE_INNOCENT)
+end
