@@ -1,15 +1,15 @@
 if SERVER then
 	AddCSLuaFile()
-	resource.AddWorkshop("2004491494")
-	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_tra.vmt')
+
+	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_tra.vmt")
 end
 
-ROLE.Base = 'ttt_role_base'
+ROLE.Base = "ttt_role_base"
 
 function ROLE:PreInitialize()
 	self.color = Color(96, 113, 94, 255)
 
-	self.abbr = 'tra'
+	self.abbr = "tra"
 	self.surviveBonus = 0
 	self.scoreKillsMultiplier = 1
 	self.scoreTeamKillsMultiplier = -16
@@ -31,4 +31,8 @@ function ROLE:PreInitialize()
 		random = 45,
 		traitorButton = 1, -- can use traitor buttons
 	}
+end
+
+function ROLE:Initialize()
+	roles.SetBaseRole(self, ROLE_INNOCENT)
 end

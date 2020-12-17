@@ -37,12 +37,11 @@ hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 
 		-- draw in 3D space
 		cam.Start3D()
-			refractMaterial:SetFloat( "$refractamount", (1 - (CurTime() - effect.time))*0.2 )
+			refractMaterial:SetFloat("$refractamount", (1 - (CurTime() - effect.time)) * 0.2)
 
 			render.SetMaterial(refractMaterial)
 			render.UpdateRefractTexture()
 			render.DrawSprite(effect.butPos, refractSize, refractSize, COLOR_WHITE)
-
 		cam.End3D()
 
 		-- remove after render time
