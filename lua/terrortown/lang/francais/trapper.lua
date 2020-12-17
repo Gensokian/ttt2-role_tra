@@ -1,4 +1,4 @@
-L = LANG.GetLanguageTableReference("francais")
+local L = LANG.GetLanguageTableReference("francais")
 
 -- GENERAL ROLE LANGUAGE STRINGS
 L[TRAPPER.name] = "Le Trappeur"
