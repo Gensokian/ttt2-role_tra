@@ -18,7 +18,6 @@ net.Receive("ttt2_role_trapper_used_tbutton", function()
 	}
 end)
 
-
 hook.Add("PreDrawEffects","TTT2_TrapperRipple",function()
 	local effectAmount = #refractData
 
