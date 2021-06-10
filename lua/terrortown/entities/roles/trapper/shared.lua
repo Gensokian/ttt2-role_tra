@@ -36,3 +36,10 @@ end
 function ROLE:Initialize()
 	roles.SetBaseRole(self, ROLE_INNOCENT)
 end
+
+function ROLE:IsSelectable()
+	local buttons = ents.FindByClass("ttt_traitor_button")
+	return GetConVar("ttt_newroles_enabled"):GetBool()
+		and GetConVar("ttt_" .. self.name .. "_enabled"):GetBool()
+		and (buttons and #buttons > 0)
+end
