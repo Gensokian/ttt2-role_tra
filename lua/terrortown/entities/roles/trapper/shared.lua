@@ -6,6 +6,8 @@ end
 
 ROLE.Base = "ttt_role_base"
 
+DEFINE_BASECLASS "ttt_role_base"
+
 function ROLE:PreInitialize()
 	self.color = Color(96, 113, 94, 255)
 
@@ -13,23 +15,20 @@ function ROLE:PreInitialize()
 	self.surviveBonus = 0
 	self.score.killsMultiplier = 2
 	self.score.teamKillsMultiplier = -8
-	self.preventFindCredits = true
-	self.preventKillCredits = true
-	self.preventTraitorAloneCredits = true
-	self.preventWin = false
-	self.unknownTeam = true
 
+	self.preventFindCredits = true
+	self.unknownTeam = true
 	self.defaultTeam = TEAM_INNOCENT
 
 	self.conVarData = {
-		pct = 0.17, -- necessary: percentage of getting this role selected (per player)
-		maximum = 1, -- maximum amount of roles in a round
-		minPlayers = 8, -- minimum amount of players until this role is able to get selected
-		credits = 0, -- the starting credits of a specific role
+		pct = 0.17,
+		maximum = 1,
+		minPlayers = 8,
+		credits = 0,
 		shopFallback = SHOP_DISABLED,
-		togglable = true, -- option to toggle a role for a client if possible (F1 menu)
+		togglable = true,
 		random = 45,
-		traitorButton = 1, -- can use traitor buttons
+		traitorButton = 1
 	}
 end
 
@@ -37,9 +36,11 @@ function ROLE:Initialize()
 	roles.SetBaseRole(self, ROLE_INNOCENT)
 end
 
-function ROLE:IsSelectable()
+function ROLE:IsSelectable(avoidHook)
 	local buttons = ents.FindByClass("ttt_traitor_button")
+
 	return GetConVar("ttt_newroles_enabled"):GetBool()
 		and GetConVar("ttt_" .. self.name .. "_enabled"):GetBool()
 		and (buttons and #buttons > 0)
+		and BaseClass.IsSelectable(self, avoidHook)
 end
