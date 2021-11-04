@@ -37,7 +37,7 @@ hook.Add("TTTTraitorButtonActivated", "ttt2_role_trapper_button_used", function(
 			-- do not send info to trappers
 			if p:GetSubRole() == ROLE_TRAPPER then continue end
 
-			local roleName = roles.GetRoleByIndex(p:GetSubRole()).name
+			local roleName = roles.GetByIndex(p:GetSubRole()).name
 
 			-- do not send info to players that can't use tButtons
 			if not GetConVar("ttt_" .. roleName .. "_traitor_button"):GetBool() then continue end
