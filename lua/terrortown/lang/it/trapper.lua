@@ -8,3 +8,7 @@ L["body_found_" .. TRAPPER.abbr] = "Era un Intrappolatore!"
 L["search_role_" .. TRAPPER.abbr] = "Questa persona era un Intrappolatore!"
 L["target_" .. TRAPPER.name] = "Intrappolatore"
 L["ttt2_desc_" .. TRAPPER.name] = [[l'Intrappolatore è un innocente che ha l'abilità speciale di attivare e vedere le trappole dei traditori!]]
+
+-- OTHER ROLE LANGUAGE STRINGS
+--L["label_trapper_tbutton_show_to_trapper"] = "Show ripple effect to Trappers"
+--L["label_trapper_tbutton_show_to_others"] = "Show ripple effect to others"

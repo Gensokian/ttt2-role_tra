@@ -44,3 +44,19 @@ function ROLE:IsSelectable(avoidHook)
 		and (buttons and #buttons > 0)
 		and BaseClass.IsSelectable(self, avoidHook)
 end
+
+if CLIENT then
+	function ROLE:AddToSettingsMenu(parent)
+		local form = vgui.CreateTTT2Form(parent, "header_roles_additional")
+
+		form:MakeCheckBox({
+			serverConvar = "ttt_trapper_tbutton_show_to_trapper",
+			label = "label_trapper_tbutton_show_to_trapper"
+		})
+
+		form:MakeCheckBox({
+			serverConvar = "ttt_trapper_tbutton_show_to_others",
+			label = "label_trapper_tbutton_show_to_others"
+		})
+	end
+end
