@@ -8,3 +8,7 @@ L["body_found_" .. TRAPPER.abbr] = "Er war ein Fallensteller."
 L["search_role_" .. TRAPPER.abbr] = "Diese Person war ein Fallensteller!"
 L["target_" .. TRAPPER.name] = "Fallensteller"
 L["ttt2_desc_" .. TRAPPER.name] = [[Der Fallensteller ist ein unschuldiger Spieler, der seine Kraft Fallen auszulösen gegen die Tiere einsetzen muss!]]
+
+-- OTHER ROLE LANGUAGE STRINGS
+L["label_trapper_tbutton_show_to_trapper"] = "Zeigen Sie Fallenstellern einen Welleneffekt"
+L["label_trapper_tbutton_show_to_others"] = "Zeigen Sie den Welleneffekt den anderen"
